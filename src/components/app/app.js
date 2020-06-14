@@ -5,11 +5,16 @@ import AppHeader from '../app-header';
 import SearchPanel from '../search-panel';
 import TodoList from '../todo-list';
 import ItemStatusFilter from '../item-status-filter';
+import ItemAddForm from '../item-add-form';
 
 
 import './app.css';
 
 export default class App extends Component {
+
+    // starting generate Id from 100
+
+    maxId = 100;
 
     state = {
         todoData: [
@@ -36,6 +41,27 @@ export default class App extends Component {
         });
         
     };
+    addItem = (text) => {
+        // generate id ?
+        const newItem = {
+            label: text,
+            important: false,
+            id: this.maxId++
+        }
+        // add element in array ?
+
+        this.setState(({ todoData }) => {
+            const newArray = [
+                ...todoData,
+                newItem
+            ];
+            return {
+                todoData: newArray
+            };
+        });
+        console.log('Added', text);
+        
+    };
 
    render(){
        return (
@@ -50,6 +76,7 @@ export default class App extends Component {
                    todos={ this.state.todoData }
                    onDeleted={ this.deleteItem }
                />
+               <ItemAddForm onItemAdded={this.addItem}/>
            </div>
        );
    }

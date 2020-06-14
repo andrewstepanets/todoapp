@@ -17,9 +17,10 @@ const TodoList = ({ todos, onDeleted } ) => {
     });
 
     return (
-        <ul className="list-group todo-list">
-            {elements}
-        </ul>
+            <ul className="list-group todo-list">
+                {elements}
+            </ul>
+        
     );
 };
 
