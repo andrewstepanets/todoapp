@@ -1,3 +1,7 @@
 .item-add-form {
     margin-top: 10px;
 }
+.item-add-form .form-control {
+    flex: 1;
+    margin-right: 6px;
+}
